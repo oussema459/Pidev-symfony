@@ -33,7 +33,7 @@ class User
     private ?\DateTimeInterface $dateNaissance = null;
 
     #[ORM\Column]
-    private array $Role = [];
+    private ?string $Role = null;
 
     public function getId(): ?int
     {
@@ -112,12 +112,12 @@ class User
         return $this;
     }
 
-    public function getRole(): array
+    public function getRole(): string
     {
         return $this->Role;
     }
 
-    public function setRole(array $Role): self
+    public function setRole(string $Role): self
     {
         $this->Role = $Role;
 
