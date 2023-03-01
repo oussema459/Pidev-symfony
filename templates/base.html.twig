@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,500|Dosis:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('Front/css/open-iconic-bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{ asset('Front/css/animate.css')}}">
     <link rel="stylesheet" href="{{ asset('Front/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{ asset('Front/css/owl.theme.default.min.css')}}">
@@ -41,7 +40,14 @@
                 <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
                 <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                <li class="nav-item"><a href="connexion.html" class="nav-link">Connecter</a></li>
+
+                {% if app.user %}
+                    <li class="nav-item"><a href="{{ path('app_logout') }}" class="nav-link">Log Out</a></li>
+                {% else %}
+
+                <li class="nav-item"><a href="{{ path('app_login') }}" class="nav-link">Connecter</a></li>
+                <li class="nav-item"><a href="{{ path('register') }}" class="nav-link">S'inscrire</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>

@@ -1,5 +1,6 @@
 {% extends 'baseBack.html.twig' %}
 
+
 {% block title %}User index{% endblock %}
 
 {% block body %}
@@ -14,8 +15,7 @@
                 <th>NumTel</th>
                 <th>Email</th>
                 <th>Password</th>
-                <th>DateNaissance</th>
-                <th>Role</th>
+                <th>Roles</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -23,13 +23,13 @@
         {% for user in users %}
             <tr>
                 <td>{{ user.id }}</td>
-                <td>{{ user.Nom }}</td>
-                <td>{{ user.Prenom }}</td>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.prenom }}</td>
                 <td>{{ user.numTel }}</td>
-                <td>{{ user.Email }}</td>
-                <td>{{ user.Password }}</td>
-                <td>{{ user.dateNaissance ? user.dateNaissance|date('Y-m-d') : '' }}</td>
-                <td>{{ user.Role ? user.Role|json_encode : '' }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.password }}</td>
+
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
                 <td>
                     <a href="{{ path('app_userBack_show', {'id': user.id}) }}">show</a>
                     <a href="{{ path('app_userBack_edit', {'id': user.id}) }}">edit</a>
