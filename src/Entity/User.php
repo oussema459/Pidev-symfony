@@ -26,9 +26,7 @@ class User
     #[ORM\Column(length: 255)]
     private ?string $Email = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $Password = null;
-
+    
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $dateNaissance = null;
 
@@ -88,17 +86,7 @@ class User
         return $this;
     }
 
-    public function getPassword(): ?string
-    {
-        return $this->Password;
-    }
-
-    public function setPassword(string $Password): self
-    {
-        $this->Password = $Password;
-
-        return $this;
-    }
+    
 
     public function getDateNaissance(): ?\DateTimeInterface
     {
