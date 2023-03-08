@@ -47,6 +47,13 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
         }
 
         $user = $token->getUser();
+        if ($user->getBanned() == 1) {
+
+
+            return new RedirectResponse($this->urlGenerator->generate('app_banned'));
+
+
+        }
 
         if(in_array('ROLE_ADMIN',$user->getRoles(),true)) {
             return new RedirectResponse($this->urlGenerator->generate('app_userBack_index'));

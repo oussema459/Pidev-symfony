@@ -22,6 +22,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $numTel = null;
 
     #[ORM\Column]
+    private ?int $banned = null;
+
+    #[ORM\Column]
     private ?string $nom = null;
 
     #[ORM\Column]
@@ -172,6 +175,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->prenom = $prenom;
     }
+
+    /**
+     * @return int|null
+     */
+    public function getBanned(): ?int
+    {
+        return $this->banned;
+    }
+
+    /**
+     * @param int|null $banned
+     */
+    public function setBanned(?int $banned): void
+    {
+        $this->banned = $banned;
+    }
+
+
 
 
 }

@@ -77,4 +77,18 @@ class UserBackController extends AbstractController
 
         return $this->redirectToRoute('app_userBacks_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/ban/{id}', name: 'app_userBack_ban', methods: ['GET', 'POST'])]
+    public function ban(Request $request, User $user, UserRepository $userRepository): Response
+    {
+        if ($user->getBanned() == 1) {
+            $user->setBanned(0);
+        } else {
+            $user->setBanned(1);
+        }
+        $userRepository->save($user, true);
+
+
+        return $this->redirectToRoute('app_userBack_index', [], Response::HTTP_SEE_OTHER);
+    }
 }

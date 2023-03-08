@@ -29,6 +29,8 @@ class UserController extends AbstractController
 
 
 
+
+
     #[Route('/register', name: 'register', methods: ['GET', 'POST'])]
     public function new(Request $request, UserRepository $userRepository): Response
     {
@@ -39,6 +41,7 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setPassword($this->passwordEncoder->encodePassword($user, $user->getPassword()));
             $user->setRoles(['ROLE_USER']);
+            $user->setBanned(false);
             $userRepository->save($user, true);
 
             return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
@@ -58,7 +61,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/profile', name: 'app_user_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, User $user, UserRepository $userRepository): Response
     {
         $form = $this->createForm(UserType::class, $user);
@@ -85,4 +88,6 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
 }
