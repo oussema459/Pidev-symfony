@@ -1,0 +1,30 @@
+
+    
+    
+{% block body %}
+    <div id="map" style="height: 400px;"></div>
+{% endblock %}
+
+{% block javascripts %}
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 10,
+                center: {lat: 48.8566, lng: 2.3522} // Paris, France
+            });
+
+            {% for besoin in besoins %}
+                var marker = new google.maps.Marker({
+                    position: {lat: {{ besoin.lieu }}, lng: {{ besoin.lieu }}},
+                    map: map,
+                    title: '{{ besoin.lieu }}'
+                });
+            {% endfor %}
+        }
+    </script>
+  <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBogpKQFMGdoLMFTHe0plA8KKuE6b4uOog&callback=initMap&v=weekly"
+      defer
+    ></script>
+{% endblock %}
