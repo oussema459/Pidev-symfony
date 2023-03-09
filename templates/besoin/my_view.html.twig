@@ -1,0 +1,8 @@
+
+
+
+{% block content %}
+    {% for qrCodeImage in qrCodeImages %}
+        <img src="{{ qrCodeImage }}" alt="QR code">
+    {% endfor %}
+{% endblock %}

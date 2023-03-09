@@ -1,0 +1,86 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Example 1</title>
+    <link rel="stylesheet" href={{asset('style.css')}} media="all" />
+</head>
+<body>
+
+
+<header class="clearfix">
+
+
+
+
+    <br>
+    <div id="company" class="clearfix">
+        <h1 class="align-center"><div>l3o w babahom</div></h1>
+
+        <br>
+
+    </div>
+    <br>
+    <h1 class="align-center"><div>Liste des besoins</div></h1>
+    <br>
+</header>
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    table.center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+<main>
+    <table border="2" class="center">
+        <thead>
+        <tr>
+            <th >nom prenom </th>
+            <th >message</th>
+            <th>association</th>
+           
+            <th>lieu</th>
+          
+
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for b in besoins %}
+            <tr>
+                <td > {{ b.name  }}</td>
+       
+                <td> {{ b.msg}}</td>
+                <td> {{ b.association}} </td>
+                
+                <td>{{ b.lieu }}</td>
+
+
+            </tr>
+
+
+        {% endfor %}
+
+
+        </tbody>
+    </table>
+
+</main>
+
+</body>
+<style>
+    body{
+        font:normal 12px/20PX "Liberation sans", Arial, Helvetica, sans-serif;
+        color:#585858;
+    }
+    img{
+        width:200px;
+        margin:200px;
+    }
+</style>
+</html>

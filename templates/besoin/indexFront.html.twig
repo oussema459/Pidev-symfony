@@ -1,0 +1,67 @@
+{% extends 'Front.html.twig' %}
+
+{% block title %}Besoin index{% endblock %}
+
+{% block body %}
+ <style>
+ .hide {
+  display: none !important;
+}
+
+</style>
+
+<h1>Dieu aime qui donne avec joie.</h1>
+
+<script>
+ function showContent(event) {
+    console.log("showContent() called"); // add this line
+    event.preventDefault();
+    var content = event.target.parentElement.nextElementSibling;
+    content.classList.toggle("hide");
+}
+
+
+
+</script>
+
+
+
+<div class="row">
+  {% for besoin in besoins %}
+    <div class="col-12 col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0">
+      <div class="post-entry">
+        <a href="#" class="mb-3 img-wrap"><img src="{{asset('besoin/'~besoin.image)}}" alt="Image placeholder" class="img-fluid"></a>
+  <a href="#" style="color: black;"><h3 style="display: inline-block; margin-right: 5px;color: orange !important;">Name</h3> {{ besoin.name }}</a>
+
+      
+       <p style="color: black;">association:{{ besoin.association  }}</p>
+        <a href="{{ path('app_don_new') }}" class="btn btn-success">Make Don</a>
+        <p style="color: black;"><a href="#" class="link-underline" onclick="showContent(event)">Read More</a></p>
+         <p class="hide" style="color: black; background-color: #F7CAC9; padding: 10px;">
+    Message: {{ besoin.msg }}<br> 
+    Lieu: {{ besoin.lieu }}
+</p>
+         
+      </div>
+    </div>
+  {% endfor %}
+</div>
+<form method="get" action="{{ path('recherche_app_name') }}">
+    <input type="text" id="search" name="association">
+    <input type="submit" class="button button2" value="Recherche">
+</form>
+
+
+
+
+
+<a href="{{ path('trie_app_name') }}"class="btn btn-outline-secondary">Trier par name</a>
+   
+
+        {{ knp_pagination_render(besoins) }}
+        
+        
+ 
+
+    
+{% endblock %}

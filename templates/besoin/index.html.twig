@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Besoin index{% endblock %}
+
+{% block body %}
+    <h1>Besoin index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Msg</th>
+              
+                <th>Association</th>
+                <th>Lieu</th>
+                <th>type</th>
+                <th>image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+        {% for besoin in besoins %}
+            <tr>
+                <td>{{ besoin.id }}</td>
+                <td>{{ besoin.name }}</td>
+                <td>{{ besoin.msg }}</td>
+                
+                <td>{{ besoin.association }}</td>
+                <td>{{ besoin.lieu }}</td>
+                <td>{{ besoin.type }}</td>
+                <td><img src="{{asset('besoin/'~besoin.image)}}" alt="Game">
+</td>
+                
+                <td>
+                    <a href="{{ path('app_besoin_show', {'id': besoin.id}) }}">show</a>
+                    <a href="{{ path('app_besoin_edit', {'id': besoin.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_besoin_new') }}">Create new</a>
+  
+{% endblock %}

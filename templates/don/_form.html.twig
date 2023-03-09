@@ -1,0 +1,15 @@
+{{ form_start(form,{'attr':{ 'novadate' : 'navalidate'}}) }}
+
+   {{ form_label(form.donneur,"Nom et prénom") }}
+{{ form_widget(form.donneur, {'attr': { 'placeholder': 'Nom Prénom'}}) }}
+{{ form_errors(form.donneur) }}<br>
+
+    {{ form_label(form.tel,"tel") }} 
+    {{ form_widget(form.tel, {'attr': { 'placeholder': 'numero tunisien'}})  }}
+  
+    {{ form_errors(form.tel) }}
+    {{ form_widget(form) }}
+      
+    <button class="btn">{{ button_label|default('Save') }}</button>
+    <img src="{{asset('Back/assets/images/logo.png') }}" class="my-custom-image">
+{{ form_end(form) }}
