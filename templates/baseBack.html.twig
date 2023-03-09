@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="{{ asset('Back/assets/css/style.css')}}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('Back/assets/images/favicon.png')}}" />
+
+  <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+
 </head>
 <body>
 <div class="container-scroller">
@@ -92,36 +95,26 @@
                 </a>
             </li>
 
-
-
-
-
             <li class="nav-item menu-items">
-                <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <span class="menu-icon">
-                <i class="mdi mdi-security"></i>
-              </span>
-                    <span class="menu-title">User Pages</span>
-                    <i class="menu-arrow"></i>
+                <a class="nav-link" href="{{ path('app_category_type_index') }}">
+                    <span class="menu-title">Association Type</span>
                 </a>
-                <div class="collapse" id="auth">
-                    <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="pages/samples/association.html"> association</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="pages/samples/evenement.html"> evenement</a></li>
-
-                        <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
-                        <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
-                        <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                        <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-                    </ul>
-                </div>
             </li>
             <li class="nav-item menu-items">
-                <a class="nav-link" href="http://www.bootstrapdash.com/demo/corona-free/jquery/documentation/documentation.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-file-document-box"></i>
-              </span>
-                    <span class="menu-title">Documentation</span>
+                <a class="nav-link" href="{{ path('app_association_back_index') }}">
+                    <span class="menu-title">Association</span>
+                </a>
+            </li>
+            
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="{{ path('app_event_back_index') }}">
+                    <span class="menu-title">Evennement</span>
+                </a>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="{{ path('app_reservation_back_index') }}">
+                    <span class="menu-title">Reservation</span>
                 </a>
             </li>
         </ul>
@@ -1023,5 +1016,9 @@
 <!-- Custom js for this page -->
 <script src="{{ asset('Back/assets/js/dashboard.js')}}"></script>
 <!-- End custom js for this page -->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
+
 </body>
 </html>
